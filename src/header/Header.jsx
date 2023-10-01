@@ -15,10 +15,10 @@ const Header = () => {
     const handleLogOut = () => {
         logOut()
             .then(() => {
-                console.log('Log out success')
+                
             })
-            .catch(error => {
-                console.log(error)
+            .catch(() => {
+                
             });
     }
 

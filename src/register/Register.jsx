@@ -1,12 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { authContext } from "../authProvider/AuthProvider";
 import { useNavigate } from "react-router-dom";
-// import { auth } from "../firebaseAuthConfig/FirebaseAuthConfig";
-// import { updateProfile } from "firebase/auth";
 
 
 
 const Register = () => {
+    const [suc, setSuc] = useState('')
+    const [err, setErr] = useState('')
     const { createUser, userProfileUpdate } = useContext(authContext);
     const navigate = useNavigate()
 
@@ -16,26 +16,28 @@ const Register = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
+        setSuc('')
+        setErr('')
+
         createUser(email, password)
-            .then((data) => {
-                console.log(data.user);
+            .then(() => {
+                
 
             userProfileUpdate({ displayName: name })
-                .then((data) => {
-                    console.log(data)
-                }).catch((error) => {
-                    console.log(error)
+                .then(() => {
+                   
+                }).catch(() => {
+                    
                 })
 
+                setSuc('Sign Up success')
                 e.target.reset()
                 navigate('/dashboard')
 
-            }).catch((data) => {
-                const error = data
-                console.log(error)
-                return
+            })
+            .catch((error) => {
+                setErr(error.message)
             });
-
     }
 
     return (
@@ -44,6 +46,8 @@ const Register = () => {
                 <div className='container mx-auto px-10 h-[60vh] flex justify-center items-center'>
                     <form onSubmit={handleRegister}>
                         <h1 className="text-5xl py-7">Register</h1>
+                        {suc && <h1 className="text-sm text-green-500">{suc}</h1>}
+                        {err && <h1 className="text-sm text-red-500">{err}</h1>}
                         <input name="name" type="text" className="py-2 px-5 rounded-md" placeholder="name" />
                         <br /><br />
                         <input name="email" type="text" className="py-2 px-5 rounded-md" placeholder="email" />
