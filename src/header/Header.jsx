@@ -5,7 +5,7 @@ import { authContext } from "../authProvider/AuthProvider";
 const Header = () => {
 
     const { user, logOut } = useContext(authContext);
-
+    
     const li = <>
         <li> <NavLink className="hover:text-white text-xl mr-4 text-white" to={'/'}>Home</NavLink> </li>
         <li> <NavLink className="hover:text-white text-xl mr-4 text-white" to={'/about'}>About</NavLink> </li>
