@@ -6,6 +6,8 @@ import Contact from "../contact/Contact";
 import ErrorPage from "../errorPage/ErrorPage";
 import Login from "../login/Login";
 import Register from "../register/Register";
+import Dashboard from "../dashboard/Dashboard";
+import PrivateRoute from "../privateRoute/PrivateRoute";
 
 
 
@@ -35,9 +37,15 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/dashboard',
+                element: <PrivateRoute> <Dashboard></Dashboard> </PrivateRoute>
             }
         ]
     },
 ]);
 
 export default router;
+
+

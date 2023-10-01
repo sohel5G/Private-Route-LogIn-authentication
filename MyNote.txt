@@ -1,0 +1,26 @@
+
+createContext()
+useContext()
+
+<authContext.Provider value={authInfo}>
+    {children}
+</authContext.Provider>
+
+// in the main.jsx file 
+<React.StrictMode>
+    <AuthProvider>
+        <RouterProvider router={router} />
+    </AuthProvider>
+</React.StrictMode>
+
+createUserWithEmailAndPassword()
+signInWithEmailAndPassword()
+onAuthStateChanged( auth, ()=> {} )
+logOut
+
+e.target.reset()
+
+
+
+
+
