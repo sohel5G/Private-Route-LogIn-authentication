@@ -8,8 +8,8 @@ import Login from "../login/Login";
 import Register from "../register/Register";
 import Dashboard from "../dashboard/Dashboard";
 import PrivateRoute from "../privateRoute/PrivateRoute";
-
-
+import PrivateRouteLogin from "../privateRoute/PrivateRouteLogin";
+import PrivateRouteRegister from "../privateRoute/PrivateRouteRegister";
 
 
 const router = createBrowserRouter([
@@ -32,11 +32,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/login',
-                element: <Login></Login>
+                element: <PrivateRouteLogin><Login></Login></PrivateRouteLogin>
             },
             {
                 path: '/register',
-                element: <Register></Register>
+                element: <PrivateRouteRegister><Register></Register></PrivateRouteRegister>
             },
             {
                 path: '/dashboard',

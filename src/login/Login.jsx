@@ -1,13 +1,11 @@
 import { useContext, useState } from "react";
 import { authContext } from "../authProvider/AuthProvider";
-import { useNavigate } from "react-router-dom";
 
 
 const Login = () => {
     const [suc, setSuc] = useState('')
     const [err, setErr] = useState('')
     const { signInUser } = useContext(authContext)
-    const navigate = useNavigate()
 
     const handleLogin = e => {
         e.preventDefault();
@@ -21,7 +19,6 @@ const Login = () => {
             .then(() => {
                 setSuc('Log in success')
                 e.target.reset()
-                navigate('/dashboard')
             })
             .catch(error => {
                 setErr(error.message)

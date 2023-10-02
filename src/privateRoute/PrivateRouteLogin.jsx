@@ -4,26 +4,25 @@ import { authContext } from "../authProvider/AuthProvider";
 import { Navigate } from "react-router-dom";
 
 
-const PrivateRoute = ({ children }) => {
+const PrivateRouteLogin = ({children}) => {
 
-    const { user, loading } = useContext(authContext);
+    const {user, loading} = useContext(authContext);
 
-    if(loading){
+    if (loading) {
         return <div className='container mx-auto px-10 h-[60vh] flex justify-center items-center'><span className="loading loading-bars loading-sm"></span></div>
     }
 
     return (
         <>
             {
-                user ? children : <Navigate to={'/register'}></Navigate>
+                !user ? children : <Navigate to={'/dashboard'}></Navigate> 
             }
         </>
-    )
+    );
 };
 
+export default PrivateRouteLogin;
 
-export default PrivateRoute;
-
-PrivateRoute.propTypes = {
+PrivateRouteLogin.propTypes = {
     children: PropTypes.node.isRequired
 }

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Register = () => {
     const [suc, setSuc] = useState('')
     const [err, setErr] = useState('')
-    const { createUser, userProfileUpdate } = useContext(authContext);
+    const { createUser, userProfileUpdate, setUser, user } = useContext(authContext);
     const navigate = useNavigate()
 
     const handleRegister = e => {
@@ -25,7 +25,8 @@ const Register = () => {
 
             userProfileUpdate({ displayName: name })
                 .then(() => {
-                   
+                    console.log(user)
+                    setUser({ email:email, displayName: name })
                 }).catch(() => {
                     
                 })
